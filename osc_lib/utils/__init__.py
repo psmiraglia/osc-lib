@@ -492,7 +492,7 @@ def get_item_properties(item, fields, mixed_case_fields=None, formatters=None):
         data = getattr(item, field_name, '')
         if field in formatters:
             formatter = formatters[field]
-            if issubclass(formatter, cliff_columns.FormattableColumn):
+            if isinstance(formatter, cliff_columns.FormattableColumn):
                 data = formatter(data)
             else:
                 warnings.warn(
